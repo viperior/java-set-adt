@@ -12,34 +12,34 @@ class TestSuite {
     setTestCount(0);
   }
 
-  public void addUnitTest(boolean expected, boolean actual) {
+  public void addUnitTest(String label, boolean expected, boolean actual) {
     if ( getTestCount() >= MAX_TEST_COUNT ) {
       displayUnitTestMaxCountReachedError();
     }
     else {
-      UnitTest test = new UnitTest(expected, actual);
+      UnitTest test = new UnitTest(label, expected, actual);
       setUnitTest(getTestCount(), test);
       incrementTestCount();
     }
   }
 
-  public void addUnitTest(int expected, int actual) {
+  public void addUnitTest(String label, int expected, int actual) {
     if ( getTestCount() >= MAX_TEST_COUNT ) {
       displayUnitTestMaxCountReachedError();
     }
     else {
-      UnitTest test = new UnitTest(expected, actual);
+      UnitTest test = new UnitTest(label, expected, actual);
       setUnitTest(getTestCount(), test);
       incrementTestCount();
     }
   }
 
-  public void addUnitTest(String expected, String actual) {
+  public void addUnitTest(String label, String expected, String actual) {
     if ( getTestCount() >= MAX_TEST_COUNT ) {
       displayUnitTestMaxCountReachedError();
     }
     else {
-      UnitTest test = new UnitTest(expected, actual);
+      UnitTest test = new UnitTest(label, expected, actual);
       setUnitTest(getTestCount(), test);
       incrementTestCount();
     }
@@ -65,6 +65,12 @@ class TestSuite {
     }
   }
 
+  private void displayEachTestResult() {
+    for (int i = 0; i < getTestCount(); i++) {
+      getUnitTest(i).displayResult();
+    }
+  }
+
   private void displayFailCount() {
     System.out.println("Failures: " + getFailCount());
   }
@@ -80,6 +86,7 @@ class TestSuite {
     System.out.println("Test count: " + getTestCount());
     displayPassCount();
     displayFailCount();
+    displayEachTestResult();
   }
 
   private void displayUnitTestMaxCountReachedError() {

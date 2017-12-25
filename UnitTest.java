@@ -5,6 +5,7 @@ class UnitTest {
   private boolean expectedBoolean;
   private int expectedInteger;
   private String expectedString;
+  private String label;
   private boolean match;
   private String type;
 
@@ -12,25 +13,28 @@ class UnitTest {
     clear();
   }
 
-  public UnitTest(boolean expected, boolean actual) {
+  public UnitTest(String testName, boolean expected, boolean actual) {
     clear();
     setType("boolean");
+    setLabel(testName);
     setExpectedBoolean(expected);
     setActualBoolean(actual);
     determineMatch();
   }
 
-  public UnitTest(int expected, int actual) {
+  public UnitTest(String testName, int expected, int actual) {
     clear();
     setType("integer");
+    setLabel(testName);
     setExpectedInteger(expected);
     setActualInteger(actual);
     determineMatch();
   }
 
-  public UnitTest(String expected, String actual) {
+  public UnitTest(String testName, String expected, String actual) {
     clear();
     setType("string");
+    setLabel(testName);
     setExpectedString(expected);
     setActualString(actual);
     determineMatch();
@@ -59,6 +63,36 @@ class UnitTest {
     }
   }
 
+  public void displayResult() {
+    String outputText, passFailText;
+
+    outputText = "";
+    passFailText = "";
+
+    if (getMatch()) {
+      passFailText = "PASS";
+    }
+    else {
+      passFailText = "FAIL";
+    }
+
+    outputText = passFailText + ": " + getLabel() + " (";
+
+    if ( getType().equals("boolean") ) {
+      outputText += getExpectedBoolean() + ", " + getActualBoolean();
+    }
+    else if ( getType().equals("integer") ) {
+      outputText += getExpectedInteger() + ", " + getActualInteger();
+    }
+    else if ( getType().equals("string") ) {
+      outputText += getExpectedString() + ", " + getActualString();
+    }
+
+    outputText += ")";
+
+    System.out.println(outputText);
+  }
+
   private boolean getActualBoolean() {
     return actualBoolean;
   }
@@ -81,6 +115,10 @@ class UnitTest {
 
   private String getExpectedString() {
     return expectedString;
+  }
+
+  private String getLabel() {
+    return label;
   }
 
   public boolean getMatch() {
@@ -113,6 +151,10 @@ class UnitTest {
 
   private void setExpectedString(String text) {
     expectedString = text;
+  }
+
+  private void setLabel(String text) {
+    label = text;
   }
 
   private void setMatch(boolean status) {
