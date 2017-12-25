@@ -82,6 +82,7 @@ class TestSuite {
   public void displayResults() {
     determinePassCount();
     determineFailCount();
+    System.out.println();
     System.out.println("Test Suite Results");
     System.out.println("Test count: " + getTestCount());
     displayPassCount();

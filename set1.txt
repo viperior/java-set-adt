@@ -1,0 +1,8 @@
+apple
+banana
+coffee
+doughnut
+apple
+banana
+eggs
+flour

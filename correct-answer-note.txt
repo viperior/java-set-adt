@@ -1,0 +1,8 @@
+Note:
+If an apple is removed from first set, then a banana from second set, the following output should be observed:
+5 items in set 1
+4 items in set 2
+8 items in s1 union s2
+1 items in s1 intersect s2
+4 items in s1 - s2
+3 items in s2 - s1

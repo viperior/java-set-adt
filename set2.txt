@@ -1,0 +1,8 @@
+apple
+banana
+coffee
+apple
+banana
+coffee
+grapes
+honey
