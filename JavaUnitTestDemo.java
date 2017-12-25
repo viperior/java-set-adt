@@ -1,4 +1,4 @@
-class JavaSetDemo {
+class JavaUnitTestDemo {
    public static void main (String[] args) throws Exception {
      TestSuite unitTests = new TestSuite();
      unitTests.addUnitTest("Different booleans", true, false);
